@@ -1,0 +1,101 @@
+<!DOCTYPE html PUBLIC "-//IETF//DTD HTML 2.0//EN">
+<html>
+  <head>
+    <title>Github Event Statistics</title>
+    <link type="text/css" rel="stylesheet" href="/xiaoruit/github-event/elegant-aero.css" />
+  </head>
+  <body style='background-image:URL("background.jpg");background-repeat:no-repeat;background-position:center top;-webkit-background-size:100%;-moz-background-size:100%;-o-background-size:100%;background-size: 100%;'>
+    <script type="text/javascript" language="javascript">
+    function checkAll(formname, checktoggle)
+    {
+        var checkboxes = new Array(); 
+        checkboxes = document[formname].getElementsByTagName('input');
+ 
+        for (var i=0; i<checkboxes.length; i++)  {
+            if (checkboxes[i].type == 'checkbox')   {
+                checkboxes[i].checked = checktoggle;
+            }
+        }
+    }
+    </script>
+    <p style="margin-bottom:2cm"/>
+    <h1 style="text-align:center">Summary Statistics for Github Events</h1>
+    <p style="margin-left:80px;margin-right:80px">Please select day of week, hour of day and event type(s) to view the corresponding average daily numbers of events and active users! </p>
+    <p style="margin-left:80px;margin-right:80px">Note: The query would return "-" if no records were found. All the three fields are required.</p>
+    <form name="form" action="/cgi-bin/xiaoruit/github-event/event-report.pl" style="width:800px;margin:0 auto;padding-top=200px;background:#FFFFFF" method="get" target="results_iframe" class="elegant-aero">
+      <label>
+	<p>Day of Week (UTC):</p></br></br></br>
+	<input type="radio" name="day" value="1"> Sun 
+  <input type="radio" name="day" value="2"> Mon 
+  <input type="radio" name="day" value="3"> Tue
+  <input type="radio" name="day" value="4"> Wed 
+  <input type="radio" name="day" value="5"> Thu 
+  <input type="radio" name="day" value="6"> Fri 
+  <input type="radio" name="day" value="7"> Sat 
+      </label>
+      <label>
+  <p>Hour of Day (UTC):</p></br></br></br>
+  <input type="radio" id="hour"  name="hour" value="00"> 00:00:00 - 00:59:59
+  <input type="radio" id="hour" name="hour" value="01"> 01:00:00 - 01:59:59
+  <input type="radio" id="hour" name="hour" value="02"> 02:00:00 - 02:59:59
+  <input type="radio" id="hour" name="hour" value="03"> 03:00:00 - 03:59:59</br>
+  <input type="radio" id="hour" name="hour" value="04"> 04:00:00 - 04:59:59
+  <input type="radio" id="hour" name="hour" value="05"> 05:00:00 - 05:59:59
+  <input type="radio" id="hour" name="hour" value="06"> 06:00:00 - 06:59:59
+  <input type="radio" id="hour" name="hour" value="07"> 07:00:00 - 07:59:59</br>
+  <input type="radio" id="hour" name="hour" value="08"> 08:00:00 - 08:59:59
+  <input type="radio" id="hour" name="hour" value="09"> 09:00:00 - 09:59:59
+  <input type="radio" id="hour" name="hour" value="10"> 10:00:00 - 10:59:59
+  <input type="radio" id="hour" name="hour" value="11"> 11:00:00 - 11:59:59</br>
+  <input type="radio" id="hour" name="hour" value="12"> 12:00:00 - 12:59:59
+  <input type="radio" id="hour" name="hour" value="13"> 13:00:00 - 13:59:59
+  <input type="radio" id="hour" name="hour" value="14"> 14:00:00 - 14:59:59
+  <input type="radio" id="hour" name="hour" value="15"> 15:00:00 - 15:59:59</br>
+  <input type="radio" id="hour" name="hour" value="16"> 16:00:00 - 16:59:59
+  <input type="radio" id="hour" name="hour" value="17"> 17:00:00 - 17:59:59
+  <input type="radio" id="hour" name="hour" value="18"> 18:00:00 - 18:59:59
+  <input type="radio" id="hour" name="hour" value="19"> 19:00:00 - 19:59:59</br>
+  <input type="radio" id="hour" name="hour" value="20"> 20:00:00 - 20:59:59
+  <input type="radio" id="hour" name="hour" value="21"> 21:00:00 - 21:59:59
+  <input type="radio" id="hour" name="hour" value="22"> 22:00:00 - 22:59:59
+  <input type="radio" id="hour" name="hour" value="23"> 23:00:00 - 23:59:59
+      </label>
+      <label>
+<p>Github Event Type(s):</p></br></br></br>
+  <input type="checkbox" name="type" value="CommitCommentEvent"> Commit Comment Event 
+  <input type="checkbox" name="type" value="CreateEvent"> Create Event
+  <input type="checkbox" name="type" value="DeleteEvent"> Delete Event 
+  <input type="checkbox" name="type" value="DeploymentEvent"> Deployment Event</br>
+  <input type="checkbox" name="type" value="DeploymentStatusEvent"> Deployment Status Event 
+  <input type="checkbox" name="type" value="DownloadEvent"> Download Event
+  <input type="checkbox" name="type" value="FollowEvent"> Download Event 
+  <input type="checkbox" name="type" value="ForkEvent"> Fork Event</br>
+  <input type="checkbox" name="type" value="ForkApplyEvent"> Fork Apply Event 
+  <input type="checkbox" name="type" value="GistEvent"> Gist Event
+  <input type="checkbox" name="type" value="GollumEvent"> Gollum Event 
+  <input type="checkbox" name="type" value="IssueCommentEvent"> Issue Comment Event</br>
+  <input type="checkbox" name="type" value="IssuesEvent"> Issues Event 
+  <input type="checkbox" name="type" value="MemberEvent"> Member Event
+  <input type="checkbox" name="type" value="MembershipEvent"> Membership Event 
+  <input type="checkbox" name="type" value="PageBuildEvent"> PageBuild Event</br>
+  <input type="checkbox" name="type" value="PublicEvent"> Public Event 
+  <input type="checkbox" name="type" value="PullRequestEvent"> Pull Request Event
+  <input type="checkbox" name="type" value="PullRequestReviewCommentEvent"> Pull Request Review Comment Event 
+  <input type="checkbox" name="type" value="PushEvent"> Push Event</br>
+  <input type="checkbox" name="type" value="ReleaseEvent"> Release Event 
+  <input type="checkbox" name="type" value="RepositoryEvent"> Repository Event
+  <input type="checkbox" name="type" value="StatusEvent"> Status Event 
+  <input type="checkbox" name="type" value="TeamAddEvent"> Team Add Event
+  <input type="checkbox" name="type" value="WatchEvent"> Watch Event</br>
+<a onclick="javascript:checkAll('form', true);" href="javascript:void();">check all</a>
+<a onclick="javascript:checkAll('form', false);" href="javascript:void();">uncheck all</a>
+      </label>
+      <label>
+  <span></span> <input type="reset"><input type="submit" value="Submit">
+      </label>
+    </form>
+    <p style="margin-bottom:2cm"/>
+
+    <iframe frameBorder="0" name="results_iframe" style="display:block;width:80%;margin-left:auto;margin-right:auto"/>
+  </body>
+</html>
